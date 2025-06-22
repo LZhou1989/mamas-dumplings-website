@@ -181,13 +181,13 @@ main .container {
 
 .product-card img {
     width: 100% !important;
-    height: 120px !important;
+    height: 150px !important;
     object-fit: cover !important;
     border-radius: 8px 8px 0 0 !important;
     display: block !important;
     background-color: #fdfaf3 !important;
     max-width: 100% !important;
-    min-height: 120px !important;
+    min-height: 150px !important;
     visibility: visible !important;
     opacity: 1 !important;
     position: relative !important;
@@ -2581,13 +2581,13 @@ main .container p {
     }
     .product-card img {
         width: 100% !important;
-        height: 120px !important;
+        height: 150px !important;
         object-fit: cover !important;
         border-radius: 8px 8px 0 0 !important;
         display: block !important;
         background-color: #fdfaf3 !important;
         max-width: 100% !important;
-        min-height: 120px !important;
+        min-height: 150px !important;
         visibility: visible !important;
         opacity: 1 !important;
         position: relative !important;
