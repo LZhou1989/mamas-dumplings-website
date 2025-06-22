@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Set up mobile filter dropdown
     setupMobileFilterDropdown();
     
-    // Only render products if we successfully loaded them from API
+    // Only render products if we successfully loaded them from API AND there are no existing HTML products
     // If API failed and we have existing HTML products, preserve them
-    if (products && products.length > 0) {
+    if (products && products.length > 0 && !hasExistingProducts) {
         renderProducts();
-    } else if (!hasExistingProducts) {
+    } else if (!hasExistingProducts && (!products || products.length === 0)) {
         // If no API products and no existing HTML, use static fallback
         products = getStaticProducts();
         renderProducts();
@@ -46,13 +46,13 @@ async function loadProducts() {
             console.log('Products loaded from API:', products);
         } else {
             console.error('Failed to load products:', data.message);
-            // Fall back to static products if API fails
-            products = getStaticProducts();
+            // Don't set static products here - let the existing HTML be preserved
+            products = [];
         }
     } catch (error) {
         console.error('Error loading products:', error);
-        // Fall back to static products if API fails
-        products = getStaticProducts();
+        // Don't set static products here - let the existing HTML be preserved
+        products = [];
     }
 }
 
