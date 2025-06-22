@@ -1,7 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
-const emailService = require('../config/emailService');
+
+// Conditional email service import to prevent startup errors
+let emailService = null;
+try {
+    emailService = require('../config/emailService');
+} catch (error) {
+    console.warn('Email service not available:', error.message);
+}
 
 // Contact form submission
 router.post('/', [
@@ -34,7 +41,13 @@ router.post('/', [
         };
 
         // Send email notification to admin
-        const emailResult = await emailService.sendContactNotification(contactData);
+        let emailResult = { success: false, error: 'Email service not available' };
+        
+        if (emailService) {
+            emailResult = await emailService.sendContactNotification(contactData);
+        } else {
+            console.warn('Email service not available - skipping contact notification email');
+        }
 
         if (emailResult.success) {
             res.status(200).json({

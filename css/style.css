@@ -186,9 +186,32 @@ main .container {
 
 .product-card img {
     width: 100%;
-    height: 200px; /* Reduced from 250px to match card-inner height */
-    object-fit: contain; /* Changed from cover to contain to show full picture */
-    border-radius: 4px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px 8px 0 0;
+    background-color: #f5f5f5;
+    background-image: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
+                      linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
+                      linear-gradient(45deg, transparent 75%, #f0f0f0 75%), 
+                      linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    transition: transform 0.3s ease;
+}
+
+.product-card img:hover {
+    transform: scale(1.05);
+}
+
+/* Image loading states */
+.product-card img:not([src]), 
+.product-card img[src=""],
+.product-card img[src*="data:image/svg+xml"] {
+    background-color: #f8f8f8;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f0f0f0"/><text x="50" y="50" font-family="Arial" font-size="12" fill="%23999" text-anchor="middle" dy=".3em">Image</text></svg>');
+    background-size: cover;
+    background-position: center;
 }
 
 .product-card h3 {
@@ -2261,6 +2284,7 @@ main .container p {
     }
     
     header .container .logo a h1 {
+<<<<<<< HEAD
         font-size: 2em;
     }
     
@@ -2295,10 +2319,43 @@ main .container p {
         margin-right: 0;
         margin-bottom: 30px;
         order: 2;
+=======
+        font-size: 2.2em;
+    }
+    
+    nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    nav ul li {
+        margin: 0;
+    }
+    
+    .header-actions {
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .header-actions a {
+        font-size: 1em;
+    }
+    
+    main .container {
+        padding: 20px 15px;
+    }
+    
+    .filters {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+>>>>>>> 7bb35e2
     }
     
     .product-grid {
         order: 1;
+<<<<<<< HEAD
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 15px;
     }
@@ -2309,6 +2366,58 @@ main .container p {
     
     .product-card img {
         height: 180px;
+=======
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+        padding: 0 5px;
+    }
+    
+    .product-card {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    
+    .product-card-inner {
+        height: auto;
+        min-height: 220px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .product-card-front {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .product-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 8px 8px 0 0;
+        display: block;
+    }
+    
+    .product-card h3 {
+        margin: 12px 12px 8px 12px;
+        font-size: 1.2em;
+        line-height: 1.3;
+    }
+    
+    .product-card .price {
+        margin: 0 12px 12px 12px;
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+    
+    .product-card button {
+        margin: 0 12px 12px 12px;
+        padding: 10px 18px;
+        font-size: 0.95em;
+        border-radius: 6px;
+>>>>>>> 7bb35e2
     }
     
     .about-us-content {
@@ -2380,20 +2489,38 @@ main .container p {
     .modal-content {
         width: 95%;
         margin: 10% auto;
+<<<<<<< HEAD
         padding: 15px;
+=======
+        padding: 20px;
+        max-height: 85vh;
+        overflow-y: auto;
+>>>>>>> 7bb35e2
     }
     
     .search-modal-content {
         width: 95%;
+<<<<<<< HEAD
+=======
+        padding: 20px;
+>>>>>>> 7bb35e2
     }
     
     .search-container {
         flex-direction: column;
+<<<<<<< HEAD
         gap: 10px;
+=======
+        gap: 15px;
+>>>>>>> 7bb35e2
     }
     
     #search-button {
         width: 100%;
+<<<<<<< HEAD
+=======
+        padding: 12px 20px;
+>>>>>>> 7bb35e2
     }
 }
 
@@ -2431,6 +2558,7 @@ main .container p {
     .product-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+<<<<<<< HEAD
     }
     
     .product-card-inner {
@@ -2447,6 +2575,57 @@ main .container p {
     
     .product-card .price {
         font-size: 1.3em;
+=======
+        padding: 0 10px;
+    }
+    
+    .product-card {
+        margin: 0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .product-card-inner {
+        height: auto;
+        min-height: 250px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .product-card-front {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 8px 8px 0 0;
+        display: block;
+    }
+    
+    .product-card h3 {
+        font-size: 1.3em;
+        margin: 15px 15px 10px 15px;
+        line-height: 1.3;
+    }
+    
+    .product-card .price {
+        font-size: 1.4em;
+        margin: 0 15px 15px 15px;
+        font-weight: bold;
+    }
+    
+    .product-card button {
+        margin: 0 15px 15px 15px;
+        padding: 12px 20px;
+        font-size: 1em;
+        border-radius: 8px;
+>>>>>>> 7bb35e2
     }
     
     .about-us-container h2 {
@@ -2497,31 +2676,75 @@ main .container p {
     .modal-content {
         width: 98%;
         margin: 5% auto;
+<<<<<<< HEAD
         padding: 10px;
+=======
+        padding: 20px;
+        max-height: 90vh;
+        overflow-y: auto;
+>>>>>>> 7bb35e2
     }
     
     .search-modal-content {
         width: 98%;
+<<<<<<< HEAD
+=======
+        padding: 20px;
+>>>>>>> 7bb35e2
     }
     
     .cart-item-modal {
         flex-direction: column;
+<<<<<<< HEAD
         text-align: center;
         gap: 10px;
     }
     
     .cart-item-price-modal {
         text-align: center;
+=======
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .cart-item-image-modal {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    
+    .cart-item-price-modal {
+        font-size: 1.2em;
+        font-weight: bold;
+>>>>>>> 7bb35e2
     }
     
     .search-result-item {
         flex-direction: column;
+<<<<<<< HEAD
         text-align: center;
         gap: 10px;
     }
     
     .suggestion-tags {
         justify-content: center;
+=======
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .search-result-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    
+    .suggestion-tags {
+        flex-wrap: wrap;
+        gap: 8px;
+>>>>>>> 7bb35e2
     }
     
     .method-intro h3 {
@@ -2530,6 +2753,7 @@ main .container p {
     
     .step {
         flex-direction: column;
+<<<<<<< HEAD
         text-align: center;
         gap: 20px;
     }
@@ -2542,6 +2766,21 @@ main .container p {
     
     .step-content {
         padding: 20px;
+=======
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5em;
+    }
+    
+    .step-content {
+        flex: 1;
+        text-align: left;
+>>>>>>> 7bb35e2
     }
     
     .step-illustration {
