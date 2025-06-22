@@ -69,7 +69,9 @@ nav a {
 
 main .container {
     display: flex;
-    padding-top: 40px;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px 0;
 }
 
 .filters {
@@ -2913,6 +2915,8 @@ main .container p {
 /* Desktop Filter Sidebar */
 .desktop-filters {
     display: block;
+    flex: 0 0 250px;
+    order: 1;
 }
 
 /* Product Grid Layout */
@@ -2921,19 +2925,29 @@ main .container p {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
     padding: 20px 0;
+    flex: 1;
+    order: 2;
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+    main .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
     .mobile-filter-container {
-        display: block;
+        display: block !important;
+        order: 1;
+        width: 100%;
     }
     
     .desktop-filters {
-        display: none;
+        display: none !important;
     }
     
     .product-grid {
+        order: 2;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 20px;
         padding: 10px 0;
