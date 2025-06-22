@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Set up event listeners
     setupEventListeners();
     
+    // Set up mobile filter dropdown
+    setupMobileFilterDropdown();
+    
     // Initial render
     renderProducts();
     updateCartCount();
@@ -548,4 +551,40 @@ style.textContent = `
         }
     }
 `;
-document.head.appendChild(style); 
+document.head.appendChild(style);
+
+// Mobile Filter Dropdown Functionality
+function setupMobileFilterDropdown() {
+    const filterToggle = document.getElementById('filter-toggle');
+    const filterDropdown = document.getElementById('filter-dropdown');
+    
+    if (filterToggle && filterDropdown) {
+        filterToggle.addEventListener('click', () => {
+            filterDropdown.classList.toggle('active');
+            
+            // Update toggle button icon
+            const chevronIcon = filterToggle.querySelector('.fa-chevron-down');
+            if (chevronIcon) {
+                if (filterDropdown.classList.contains('active')) {
+                    chevronIcon.classList.remove('fa-chevron-down');
+                    chevronIcon.classList.add('fa-chevron-up');
+                } else {
+                    chevronIcon.classList.remove('fa-chevron-up');
+                    chevronIcon.classList.add('fa-chevron-down');
+                }
+            }
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!filterToggle.contains(e.target) && !filterDropdown.contains(e.target)) {
+                filterDropdown.classList.remove('active');
+                const chevronIcon = filterToggle.querySelector('.fa-chevron-up');
+                if (chevronIcon) {
+                    chevronIcon.classList.remove('fa-chevron-up');
+                    chevronIcon.classList.add('fa-chevron-down');
+                }
+            }
+        });
+    }
+} 

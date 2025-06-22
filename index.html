@@ -34,7 +34,44 @@
 
     <main>
         <div class="container">
-            <aside class="filters">
+            <!-- Mobile Filter Dropdown -->
+            <div class="mobile-filter-container">
+                <button class="filter-toggle" id="filter-toggle">
+                    <i class="fas fa-filter"></i>
+                    <span>Filter Products</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="filter-dropdown" id="filter-dropdown">
+                    <div class="filter-group">
+                        <h3 data-translate="dumplings">Dumplings</h3>
+                        <ul class="sub-filters">
+                            <li><label><input type="checkbox" name="filter" value="dumpling-pork"> Pork</label></li>
+                            <li><label><input type="checkbox" name="filter" value="dumpling-chicken"> Chicken</label></li>
+                            <li><label><input type="checkbox" name="filter" value="dumpling-beef"> Beef</label></li>
+                            <li><label><input type="checkbox" name="filter" value="dumpling-shrimp"> Shrimp</label></li>
+                            <li><label><input type="checkbox" name="filter" value="dumpling-vegetable"> Vegetable</label></li>
+                        </ul>
+                    </div>
+                    <div class="filter-group">
+                        <h3 data-translate="wontons">Wontons</h3>
+                        <ul class="sub-filters">
+                            <li><label><input type="checkbox" name="filter" value="wonton-pork"> Pork</label></li>
+                            <li><label><input type="checkbox" name="filter" value="wonton-shrimp"> Shrimp</label></li>
+                        </ul>
+                    </div>
+                    <div class="filter-group">
+                        <h3 data-translate="desserts">Desserts</h3>
+                        <ul class="sub-filters">
+                            <li><label><input type="checkbox" name="filter" value="dessert-pumpkin-ricecake"> Pumpkin Ricecake</label></li>
+                            <li><label><input type="checkbox" name="filter" value="dessert-tang-yuan"> Tang Yuan</label></li>
+                            <li><label><input type="checkbox" name="filter" value="dessert-zhong-zi"> Zhong Zi</label></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop Filter Sidebar (hidden on mobile) -->
+            <aside class="filters desktop-filters">
                 <div class="filter-group">
                     <h3 data-translate="dumplings">Dumplings</h3>
                     <ul class="sub-filters">
