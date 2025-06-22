@@ -22,11 +22,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Set up mobile filter dropdown
     setupMobileFilterDropdown();
     
-    // Only render products if we successfully loaded them from API AND there are no existing HTML products
-    // If API failed and we have existing HTML products, preserve them
-    if (products && products.length > 0 && !hasExistingProducts) {
+    // If we have existing HTML products, use static products for functionality
+    if (hasExistingProducts) {
+        products = getStaticProducts();
+        console.log('Using static products for existing HTML');
+    } else if (products && products.length > 0) {
+        // If API worked and no existing HTML, render the API products
         renderProducts();
-    } else if (!hasExistingProducts && (!products || products.length === 0)) {
+    } else if (!products || products.length === 0) {
         // If no API products and no existing HTML, use static fallback
         products = getStaticProducts();
         renderProducts();
@@ -709,4 +712,4 @@ function setupMobileFilterDropdown() {
             }
         });
     }
-} 
+}
