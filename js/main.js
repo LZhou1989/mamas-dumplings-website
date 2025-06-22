@@ -191,26 +191,10 @@ function renderProducts() {
         productCard.dataset.filter = `dumpling-${product.subcategory.toLowerCase()}`;
         
         productCard.innerHTML = `
-            <div class="product-card-inner">
-                <div class="product-card-front">
-                    <img src="${product.image}" alt="${product.name}" class="product-image">
-                </div>
-                <div class="product-card-back">
-                    <h4>${product.name.split(' ').slice(0, 2).join(' ')}</h4>
-                    <p>${product.description}</p>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>${product.name}</h3>
-                <p class="price">€${product.price.toFixed(2)}</p>
-                <div class="product-details">
-                    <span class="rating">★ ${product.rating}</span>
-                    <span class="reviews">(${product.reviews} reviews)</span>
-                </div>
-                <button class="add-to-cart-btn" data-product-id="${product.id}">
-                    Add to Cart
-                </button>
-            </div>
+            <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 150px; object-fit: contain; border-radius: 8px;">
+            <h3>${product.name}</h3>
+            <p>€${product.price.toFixed(2)}</p>
+            <button data-product-id="${product.id}" data-translate="addToCart">Add to Cart</button>
         `;
         
         productGrid.appendChild(productCard);
