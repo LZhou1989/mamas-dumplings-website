@@ -2852,7 +2852,7 @@ main .container p {
 }
 
 .filter-dropdown {
-    display: none;
+    display: none !important;
     background: white;
     border: 2px solid #e9ecef;
     border-top: none;
@@ -2864,7 +2864,7 @@ main .container p {
 }
 
 .filter-dropdown.active {
-    display: block;
+    display: block !important;
 }
 
 .filter-dropdown .filter-group {
