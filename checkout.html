@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Mama's Dumplings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Mama's Dumplings Logo">
+                    <h1>Mama's Dumplings</h1>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Shop</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="how-to-cook.html">How to Cook</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#">Search</a>
+                <a href="account.html">Account</a>
+                <a href="#" id="cart-link">Cart (0)</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container checkout-container">
+            <h2>Checkout</h2>
+            <div class="checkout-layout">
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="summary-items">
+                        <!-- Order summary will be injected here by JavaScript -->
+                    </div>
+                    <div class="discount-section">
+                        <input type="text" id="discount-code" placeholder="Discount code or gift card">
+                        <button id="apply-discount">Apply</button>
+                    </div>
+                    <div class="price-breakdown">
+                        <div class="price-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal-price">€0.00</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Shipping <i class="fas fa-question-circle"></i></span>
+                            <span id="shipping-cost">Enter shipping address</span>
+                        </div>
+                    </div>
+                    <div class="total-price-section">
+                        <span>Total</span>
+                        <span id="total-price">EUR €0.00</span>
+                    </div>
+                </div>
+                <form class="checkout-form">
+                    <h3>Shipping Information</h3>
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
+
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" required>
+
+                    <label for="zip">ZIP Code</label>
+                    <input type="text" id="zip" name="zip" required>
+
+                    <h3>Payment Information</h3>
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" name="card-number" required>
+
+                    <label for="expiry">Expiry Date (MM/YY)</label>
+                    <input type="text" id="expiry" name="expiry" required>
+
+                    <label for="cvc">CVC</label>
+                    <input type="text" id="cvc" name="cvc" required>
+
+                    <button type="submit">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-column">
+                <h4>CUSTOMER CARE</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>BRAND</h4>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>ACCOUNT</h4>
+                <ul>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">Register</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>SOCIAL</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-column newsletter">
+                <h4>SIGN UP TO OUR NEWSLETTER</h4>
+                <form>
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">SUBSCRIBE</button>
+                </form>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2024 Mama's Dumplings. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="js/main.js" defer></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html> 
