@@ -1,13 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Playfair+Display:wght@700&display=swap');
 
-/* DEBUG: Force all images to be visible */
-img {
-    background-color: yellow !important;
-    border: 5px solid blue !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
+/* DEBUG: Force all images to be visible - REMOVED GLOBAL RULES */
+/* Only apply to specific elements, not all images */
 
 body {
     font-family: 'Poppins', sans-serif;
