@@ -6,6 +6,10 @@ let cart = [];
 const API_BASE = '/api';
 
 document.addEventListener('DOMContentLoaded', async () => {
+    // Check if there are already products in the HTML
+    const existingProducts = document.querySelectorAll('.product-card');
+    const hasExistingProducts = existingProducts.length > 0;
+    
     // Load products from API
     await loadProducts();
     
@@ -18,8 +22,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Set up mobile filter dropdown
     setupMobileFilterDropdown();
     
-    // Initial render
-    renderProducts();
+    // Only render products if we successfully loaded them from API
+    // If API failed and we have existing HTML products, preserve them
+    if (products && products.length > 0) {
+        renderProducts();
+    } else if (!hasExistingProducts) {
+        // If no API products and no existing HTML, use static fallback
+        products = getStaticProducts();
+        renderProducts();
+    }
+    
     updateCartCount();
 });
 
@@ -34,16 +46,142 @@ async function loadProducts() {
             console.log('Products loaded from API:', products);
         } else {
             console.error('Failed to load products:', data.message);
+            // Fall back to static products if API fails
+            products = getStaticProducts();
         }
     } catch (error) {
         console.error('Error loading products:', error);
+        // Fall back to static products if API fails
+        products = getStaticProducts();
     }
+}
+
+// Static products fallback
+function getStaticProducts() {
+    return [
+        {
+            id: 1,
+            name: "Pork & Cabbage Dumplings",
+            price: 12.99,
+            image: "images/pork-cabbage-dumplings.jpg",
+            description: "Juicy pork and fresh cabbage in a classic wrapper.",
+            subcategory: "pork",
+            rating: 4.8,
+            reviews: 124
+        },
+        {
+            id: 2,
+            name: "Chicken & Mushroom Dumplings",
+            price: 12.99,
+            image: "images/chicken-mushroom-dumplings.jpg",
+            description: "Tender chicken and savory mushrooms for a comforting meal.",
+            subcategory: "chicken",
+            rating: 4.7,
+            reviews: 98
+        },
+        {
+            id: 3,
+            name: "Spicy Beef Dumplings",
+            price: 13.99,
+            image: "images/spicy-beef-dumplings.jpg",
+            description: "Boldly spiced beef in a perfectly pleated wrapper.",
+            subcategory: "beef",
+            rating: 4.9,
+            reviews: 156
+        },
+        {
+            id: 4,
+            name: "Shrimp & Chive Dumplings",
+            price: 14.99,
+            image: "images/shrimp-chive-dumplings.jpg",
+            description: "Plump shrimp and fragrant chives create a fresh filling.",
+            subcategory: "shrimp",
+            rating: 4.6,
+            reviews: 87
+        },
+        {
+            id: 5,
+            name: "Vegetable Tofu Dumplings",
+            price: 11.99,
+            image: "images/vegetable-tofu-dumplings.jpg",
+            description: "A wholesome mix of fresh vegetables and savory tofu.",
+            subcategory: "vegetable",
+            rating: 4.5,
+            reviews: 73
+        },
+        {
+            id: 6,
+            name: "Kimchi & Pork Dumplings",
+            price: 13.99,
+            image: "images/kimchi-pork-dumplings.jpg",
+            description: "Spicy kimchi paired with savory pork for bold flavor.",
+            subcategory: "pork",
+            rating: 4.8,
+            reviews: 112
+        },
+        {
+            id: 7,
+            name: "Pork Wontons",
+            price: 11.99,
+            image: "images/pork-cabbage-dumplings.jpg",
+            description: "Classic pork wontons in a delicate, silky wrapper.",
+            subcategory: "pork",
+            rating: 4.4,
+            reviews: 65
+        },
+        {
+            id: 8,
+            name: "Shrimp Wontons",
+            price: 13.99,
+            image: "images/shrimp-chive-dumplings.jpg",
+            description: "Succulent shrimp wrapped in a thin, tender wonton skin.",
+            subcategory: "shrimp",
+            rating: 4.6,
+            reviews: 89
+        },
+        {
+            id: 9,
+            name: "Pumpkin Ricecake",
+            price: 9.99,
+            image: "images/vegetable-tofu-dumplings.jpg",
+            description: "A sweet and chewy delight made from glutinous rice.",
+            subcategory: "pumpkin",
+            rating: 4.3,
+            reviews: 42
+        },
+        {
+            id: 10,
+            name: "Tang Yuan",
+            price: 8.99,
+            image: "images/kimchi-pork-dumplings.jpg",
+            description: "Sweet glutinous rice balls in a warm, comforting soup.",
+            subcategory: "tang",
+            rating: 4.2,
+            reviews: 38
+        },
+        {
+            id: 11,
+            name: "Zhong Zi",
+            price: 10.99,
+            image: "images/chicken-mushroom-dumplings.jpg",
+            description: "Traditional sticky rice dumplings wrapped in bamboo leaves.",
+            subcategory: "zhong",
+            rating: 4.4,
+            reviews: 51
+        }
+    ];
 }
 
 // Render products in the grid
 function renderProducts() {
     const productGrid = document.querySelector('.product-grid');
     if (!productGrid) return;
+    
+    // If no products are loaded, don't clear the existing HTML
+    if (!products || products.length === 0) {
+        console.log('No products loaded, preserving existing HTML');
+        return;
+    }
     
     productGrid.innerHTML = '';
     
