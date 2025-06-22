@@ -2284,42 +2284,6 @@ main .container p {
     }
     
     header .container .logo a h1 {
-<<<<<<< HEAD
-        font-size: 2em;
-    }
-    
-    nav ul {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-    
-    nav ul li {
-        margin-left: 0;
-    }
-    
-    .header-actions {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-    }
-    
-    .header-actions a {
-        margin-left: 0;
-    }
-    
-    main .container {
-        flex-direction: column;
-        padding-top: 20px;
-    }
-    
-    .filters {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 30px;
-        order: 2;
-=======
         font-size: 2.2em;
     }
     
@@ -2350,23 +2314,10 @@ main .container p {
         flex-direction: column;
         gap: 20px;
         padding: 20px;
->>>>>>> 7bb35e2
     }
     
     .product-grid {
         order: 1;
-<<<<<<< HEAD
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 15px;
-    }
-    
-    .product-card-inner {
-        height: 180px;
-    }
-    
-    .product-card img {
-        height: 180px;
-=======
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
         gap: 20px;
         padding: 0 5px;
@@ -2417,7 +2368,6 @@ main .container p {
         padding: 10px 18px;
         font-size: 0.95em;
         border-radius: 6px;
->>>>>>> 7bb35e2
     }
     
     .about-us-content {
@@ -2489,38 +2439,24 @@ main .container p {
     .modal-content {
         width: 95%;
         margin: 10% auto;
-<<<<<<< HEAD
-        padding: 15px;
-=======
         padding: 20px;
         max-height: 85vh;
         overflow-y: auto;
->>>>>>> 7bb35e2
     }
     
     .search-modal-content {
         width: 95%;
-<<<<<<< HEAD
-=======
         padding: 20px;
->>>>>>> 7bb35e2
     }
     
     .search-container {
         flex-direction: column;
-<<<<<<< HEAD
-        gap: 10px;
-=======
         gap: 15px;
->>>>>>> 7bb35e2
     }
     
     #search-button {
         width: 100%;
-<<<<<<< HEAD
-=======
         padding: 12px 20px;
->>>>>>> 7bb35e2
     }
 }
 
@@ -2558,24 +2494,6 @@ main .container p {
     .product-grid {
         grid-template-columns: 1fr;
         gap: 20px;
-<<<<<<< HEAD
-    }
-    
-    .product-card-inner {
-        height: 200px;
-    }
-    
-    .product-card img {
-        height: 200px;
-    }
-    
-    .product-card h3 {
-        font-size: 1.2em;
-    }
-    
-    .product-card .price {
-        font-size: 1.3em;
-=======
         padding: 0 10px;
     }
     
@@ -2625,7 +2543,6 @@ main .container p {
         padding: 12px 20px;
         font-size: 1em;
         border-radius: 8px;
->>>>>>> 7bb35e2
     }
     
     .about-us-container h2 {
@@ -2676,33 +2593,18 @@ main .container p {
     .modal-content {
         width: 98%;
         margin: 5% auto;
-<<<<<<< HEAD
-        padding: 10px;
-=======
         padding: 20px;
         max-height: 90vh;
         overflow-y: auto;
->>>>>>> 7bb35e2
     }
     
     .search-modal-content {
         width: 98%;
-<<<<<<< HEAD
-=======
         padding: 20px;
->>>>>>> 7bb35e2
     }
     
     .cart-item-modal {
         flex-direction: column;
-<<<<<<< HEAD
-        text-align: center;
-        gap: 10px;
-    }
-    
-    .cart-item-price-modal {
-        text-align: center;
-=======
         align-items: flex-start;
         gap: 10px;
     }
@@ -2717,19 +2619,10 @@ main .container p {
     .cart-item-price-modal {
         font-size: 1.2em;
         font-weight: bold;
->>>>>>> 7bb35e2
     }
     
     .search-result-item {
         flex-direction: column;
-<<<<<<< HEAD
-        text-align: center;
-        gap: 10px;
-    }
-    
-    .suggestion-tags {
-        justify-content: center;
-=======
         align-items: flex-start;
         gap: 10px;
     }
@@ -2744,7 +2637,6 @@ main .container p {
     .suggestion-tags {
         flex-wrap: wrap;
         gap: 8px;
->>>>>>> 7bb35e2
     }
     
     .method-intro h3 {
@@ -2753,20 +2645,6 @@ main .container p {
     
     .step {
         flex-direction: column;
-<<<<<<< HEAD
-        text-align: center;
-        gap: 20px;
-    }
-    
-    .step-number {
-        position: static;
-        transform: none;
-        margin-bottom: 10px;
-    }
-    
-    .step-content {
-        padding: 20px;
-=======
         gap: 20px;
         text-align: center;
     }
@@ -2780,7 +2658,6 @@ main .container p {
     .step-content {
         flex: 1;
         text-align: left;
->>>>>>> 7bb35e2
     }
     
     .step-illustration {
