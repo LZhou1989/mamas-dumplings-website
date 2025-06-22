@@ -26,8 +26,8 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="#">Search</a>
-                <a href="account.html" data-translate="account">Account</a>
+                <a href="#" id="search-link">Search</a>
+                <a href="account.html">Account</a>
                 <a href="#" id="cart-link">Cart (0)</a>
             </div>
         </div>
@@ -56,27 +56,12 @@
                         <button type="submit" data-translate="sendMessage">Send Message</button>
                     </form>
                 </div>
-                
-                <div class="contact-info-section">
-                    <h3 data-translate="businessHours">Business Hours</h3>
-                    <div class="business-hours">
-                        <p><strong>Monday - Friday:</strong> 9:00 AM - 8:00 PM</p>
-                        <p><strong>Saturday:</strong> 10:00 AM - 6:00 PM</p>
-                        <p><strong>Sunday:</strong> 11:00 AM - 5:00 PM</p>
-                    </div>
-                    
-                    <h3 data-translate="address">Address</h3>
-                    <div class="address-info">
-                        <p>Mama's Dumplings</p>
-                        <p>123 Dumpling Street</p>
-                        <p>Berlin, Germany 10115</p>
-                    </div>
-                    
-                    <h3 data-translate="phone">Phone</h3>
-                    <p>+49 30 1234 5678</p>
-                    
-                    <h3 data-translate="email">Email</h3>
-                    <p>info@mamas-dumplings.com</p>
+                <div class="contact-info">
+                    <h3>Our Information</h3>
+                    <p><strong>Address:</strong><br>Herzogparkstrasse 1<br>81679 Munich, Germany</p>
+                    <p><strong>Email:</strong><br>contact@mamas-dumplings.com</p>
+                    <p><strong>Phone:</strong><br>+49 123 456 7890</p>
+                    <div id="map"></div>
                 </div>
             </div>
             
@@ -129,9 +114,33 @@
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="js/languages.js"></script>
+    <!-- Search Modal -->
+    <div id="search-modal" class="modal">
+        <div class="modal-content search-modal-content">
+            <span class="close-button" id="search-close">&times;</span>
+            <h2>Search Products</h2>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search for dumplings, wontons, desserts..." autocomplete="off">
+                <button id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+            <div id="search-results">
+                <!-- Search results will be displayed here -->
+            </div>
+            <div id="search-suggestions">
+                <h4>Popular Searches:</h4>
+                <div class="suggestion-tags">
+                    <span class="suggestion-tag">Pork</span>
+                    <span class="suggestion-tag">Chicken</span>
+                    <span class="suggestion-tag">Shrimp</span>
+                    <span class="suggestion-tag">Vegetable</span>
+                    <span class="suggestion-tag">Spicy</span>
+                    <span class="suggestion-tag">Dessert</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="js/contact.js"></script>
     <script src="js/main.js"></script>
 </body>
