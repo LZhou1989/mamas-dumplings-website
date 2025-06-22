@@ -1,19 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
+const emailService = require('../config/emailService');
+const paymentService = require('../config/paymentService');
 
 // Sample orders data (in a real app, this would come from a database)
 let orders = [];
 
-// Create a new order
-router.post('/', (req, res) => {
+// Create a new order with payment and email integration
+router.post('/', async (req, res) => {
     try {
         const {
             customerInfo,
             items,
             totalAmount,
             shippingAddress,
-            paymentMethod
+            paymentMethod,
+            paymentIntentId
         } = req.body;
 
         // Validate required fields
@@ -24,6 +27,18 @@ router.post('/', (req, res) => {
             });
         }
 
+        // Verify payment if paymentIntentId is provided
+        if (paymentIntentId) {
+            const paymentResult = await paymentService.confirmPayment(paymentIntentId);
+            if (!paymentResult.success) {
+                return res.status(400).json({
+                    success: false,
+                    message: 'Payment verification failed',
+                    error: paymentResult.error
+                });
+            }
+        }
+
         const newOrder = {
             id: uuidv4(),
             orderNumber: `MD-${Date.now()}`,
@@ -32,13 +47,24 @@ router.post('/', (req, res) => {
             totalAmount,
             shippingAddress,
             paymentMethod: paymentMethod || 'Credit Card',
-            status: 'pending',
+            paymentIntentId: paymentIntentId || null,
+            status: paymentIntentId ? 'confirmed' : 'pending',
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString(),
             estimatedDelivery: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString() // 7 days from now
         };
 
         orders.push(newOrder);
+
+        // Send order confirmation email
+        if (customerInfo.email) {
+            try {
+                await emailService.sendOrderConfirmation(newOrder, customerInfo.email);
+            } catch (emailError) {
+                console.error('Failed to send order confirmation email:', emailError);
+                // Don't fail the order creation if email fails
+            }
+        }
 
         res.status(201).json({
             success: true,
@@ -47,13 +73,107 @@ router.post('/', (req, res) => {
                 orderId: newOrder.id,
                 orderNumber: newOrder.orderNumber,
                 totalAmount: newOrder.totalAmount,
-                estimatedDelivery: newOrder.estimatedDelivery
+                estimatedDelivery: newOrder.estimatedDelivery,
+                status: newOrder.status
             }
         });
     } catch (error) {
         res.status(500).json({
             success: false,
             message: 'Error creating order',
+            error: error.message
+        });
+    }
+});
+
+// Create payment intent for order
+router.post('/create-payment-intent', async (req, res) => {
+    try {
+        const { orderData } = req.body;
+
+        if (!orderData || !orderData.totalAmount) {
+            return res.status(400).json({
+                success: false,
+                message: 'Order data and total amount are required'
+            });
+        }
+
+        const paymentResult = await paymentService.createPaymentIntent(orderData);
+
+        if (paymentResult.success) {
+            res.json({
+                success: true,
+                clientSecret: paymentResult.clientSecret,
+                paymentIntentId: paymentResult.paymentIntentId
+            });
+        } else {
+            res.status(400).json({
+                success: false,
+                message: 'Failed to create payment intent',
+                error: paymentResult.error
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Error creating payment intent',
+            error: error.message
+        });
+    }
+});
+
+// Process refund for order
+router.post('/:id/refund', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { amount, reason } = req.body;
+
+        const order = orders.find(o => o.id === id);
+        
+        if (!order) {
+            return res.status(404).json({
+                success: false,
+                message: 'Order not found'
+            });
+        }
+
+        if (!order.paymentIntentId) {
+            return res.status(400).json({
+                success: false,
+                message: 'Order has no payment intent to refund'
+            });
+        }
+
+        const refundResult = await paymentService.createRefund(order.paymentIntentId, amount);
+
+        if (refundResult.success) {
+            // Update order status
+            order.status = 'refunded';
+            order.refundAmount = refundResult.amount;
+            order.refundReason = reason;
+            order.updatedAt = new Date().toISOString();
+
+            res.json({
+                success: true,
+                message: 'Refund processed successfully',
+                data: {
+                    orderId: order.id,
+                    orderNumber: order.orderNumber,
+                    refundAmount: refundResult.amount,
+                    refundId: refundResult.refundId
+                }
+            });
+        } else {
+            res.status(400).json({
+                success: false,
+                message: 'Failed to process refund',
+                error: refundResult.error
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Error processing refund',
             error: error.message
         });
     }

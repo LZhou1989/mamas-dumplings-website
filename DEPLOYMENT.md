@@ -22,10 +22,10 @@ git init
 git add .
 git commit -m "Initial commit - Mama's Dumplings website"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/mamas-dumplings-website.git
+git remote add origin YOUR_GITHUB_URL
 git push -u origin main
 ```
-(Replace `YOUR_USERNAME` with your actual GitHub username)
+(Replace `YOUR_GITHUB_URL` with the URL of your new GitHub repository)
 
 ### Step 4: Deploy to Render
 1. Go to [Render.com](https://render.com) and sign up/login

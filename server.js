@@ -11,6 +11,7 @@ const productRoutes = require('./routes/products');
 const orderRoutes = require('./routes/orders');
 const userRoutes = require('./routes/users');
 const reviewRoutes = require('./routes/reviews');
+const contactRoutes = require('./routes/contact');
 const { router: authRoutes } = require('./routes/auth');
 
 const app = express();
@@ -34,6 +35,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/reviews', reviewRoutes);
+app.use('/api/contact', contactRoutes);
 app.use('/api/auth', authRoutes);
 
 // Health check endpoint for deployment platforms
