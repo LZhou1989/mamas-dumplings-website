@@ -1,7 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
-const emailService = require('../config/emailService');
+
+// Conditional email service import to prevent startup errors
+let emailService = null;
+try {
+    emailService = require('../config/emailService');
+} catch (error) {
+    console.warn('Email service not available:', error.message);
+}
+
 const paymentService = require('../config/paymentService');
 
 // Sample orders data (in a real app, this would come from a database)
@@ -57,13 +65,15 @@ router.post('/', async (req, res) => {
         orders.push(newOrder);
 
         // Send order confirmation email
-        if (customerInfo.email) {
+        if (customerInfo.email && emailService) {
             try {
                 await emailService.sendOrderConfirmation(newOrder, customerInfo.email);
             } catch (emailError) {
                 console.error('Failed to send order confirmation email:', emailError);
                 // Don't fail the order creation if email fails
             }
+        } else if (customerInfo.email && !emailService) {
+            console.warn('Email service not available - skipping order confirmation email');
         }
 
         res.status(201).json({

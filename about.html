@@ -18,10 +18,10 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Shop</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="how-to-cook.html">How to Cook</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html" data-translate="shop">Shop</a></li>
+                    <li><a href="about.html" data-translate="about">About Us</a></li>
+                    <li><a href="how-to-cook.html" data-translate="howToCook">How to Cook</a></li>
+                    <li><a href="contact.html" data-translate="contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -34,12 +34,11 @@
 
     <main>
         <div class="container about-us-container">
-            <h2>Our Story</h2>
+            <h2 data-translate="ourStory">Our Story</h2>
             <div class="about-us-content">
                 <div class="about-us-text">
-                    <p>Our story started with a journey from China to Germany, carrying a dream for a better future and the rich culinary traditions of our homeland. After years of running successful restaurants, we felt a calling to return to our roots—the authentic flavors of our childhood.</p>
-                    <p>No matter the occasion, Mama always made us feel at home with her handmade dumplings, Tang Yuan, and Zhong Zi. These tastes were our connection to heritage and family, a tradition we kept alive thousands of miles away.</p>
-                    <p>Mama's Dumplings is our way of sharing that warmth and authenticity with you. Our motto is to keep Chinese tradition alive and bring genuine, heartfelt food to everyone. Welcome to our family.</p>
+                    <p data-translate="storyText">Our journey began when Mama moved from China to Germany, bringing with her the authentic flavors and traditional recipes passed down through generations. In our kitchen, every dumpling is handcrafted with love, using only the finest ingredients and time-honored techniques.</p>
+                    <p data-translate="storyText2">Today, we're proud to share these authentic Chinese dumplings with our German community, offering a taste of home and tradition in every bite.</p>
                 </div>
                 <img src="images/mama-making-dumplings.jpg" alt="Mama making dumplings in the kitchen" class="about-us-image">
             </div>
@@ -47,49 +46,29 @@
     </main>
 
     <footer>
-        <div class="container footer-container">
-            <div class="footer-column">
-                <h4>CUSTOMER CARE</h4>
-                <ul>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Shipping</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Returns</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>BRAND</h4>
-                <ul>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>ACCOUNT</h4>
-                <ul>
-                    <li><a href="#">Sign In</a></li>
-                    <li><a href="#">Register</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>SOCIAL</h4>
-                <div class="social-icons">
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4 data-translate="followUs">Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column newsletter">
+                    <h4 data-translate="newsletter">Sign up to our newsletter</h4>
+                    <form>
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit" data-translate="subscribe">Subscribe</button>
+                    </form>
                 </div>
             </div>
-            <div class="footer-column newsletter">
-                <h4>SIGN UP TO OUR NEWSLETTER</h4>
-                <form>
-                    <input type="email" placeholder="Enter your email">
-                    <button type="submit">SUBSCRIBE</button>
-                </form>
+            <div class="container copyright">
+                <p data-translate="copyright">© 2024 Mama's Dumplings. All Rights Reserved.</p>
             </div>
-        </div>
-        <div class="container copyright">
-            <p>&copy; 2024 Mama's Dumplings. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -97,16 +76,39 @@
     <div id="cart-modal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
-            <h2>Shopping Cart</h2>
+            <h2 data-translate="shoppingCart">Shopping Cart</h2>
             <div id="cart-items">
-                <!-- Cart items will be displayed here -->
+                <!-- Cart items will be dynamically added here -->
             </div>
-            <div class="cart-footer-modal">
-                <div class="cart-subtotal-modal">
-                    <span>Subtotal</span>
-                    <span id="cart-subtotal">€0.00</span>
+            <div class="cart-total">
+                <p><span data-translate="total">Total:</span> <span id="cart-total">€0.00</span></p>
+                <button id="checkout-btn" data-translate="checkout">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div id="search-modal" class="modal">
+        <div class="modal-content search-modal-content">
+            <span class="close-button" id="search-close">&times;</span>
+            <h2>Search Products</h2>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search for dumplings, wontons, desserts..." autocomplete="off">
+                <button id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+            <div id="search-results">
+                <!-- Search results will be displayed here -->
+            </div>
+            <div id="search-suggestions">
+                <h4>Popular Searches:</h4>
+                <div class="suggestion-tags">
+                    <span class="suggestion-tag">Pork</span>
+                    <span class="suggestion-tag">Chicken</span>
+                    <span class="suggestion-tag">Shrimp</span>
+                    <span class="suggestion-tag">Vegetable</span>
+                    <span class="suggestion-tag">Spicy</span>
+                    <span class="suggestion-tag">Dessert</span>
                 </div>
-                <button id="checkout-button">Proceed to Checkout</button>
             </div>
         </div>
     </div>
