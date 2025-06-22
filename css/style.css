@@ -132,15 +132,12 @@ main .container {
 }
 
 .product-card-inner {
-    position: relative;
-    width: 100%;
     height: 120px;
     min-height: unset;
     display: block;
     position: relative;
     transform: none;
-    margin-bottom: 15px;
-    /* Remove absolute positioning and 100% height from parent */
+    overflow: visible;
 }
 
 .product-card-front, .product-card-back {
@@ -155,13 +152,12 @@ main .container {
 }
 
 .product-card-front {
-    background-color: #fff;
-    border: 1px solid #f0e9d6;
-    z-index: 1;
     position: relative;
     display: block;
     transform: none;
     height: 120px;
+    z-index: 1;
+    overflow: visible;
 }
 
 .product-card-back {
@@ -188,12 +184,18 @@ main .container {
 }
 
 .product-card img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 8px 8px 0 0;
-    display: block;
-    background-color: #fdfaf3;
+    width: 100% !important;
+    height: 120px !important;
+    object-fit: cover !important;
+    border-radius: 8px 8px 0 0 !important;
+    display: block !important;
+    background-color: #fdfaf3 !important;
+    max-width: 100% !important;
+    min-height: 120px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 10 !important;
 }
 
 .product-card h3 {
@@ -2574,6 +2576,7 @@ main .container p {
         transform: none;
         height: 120px;
         z-index: 1;
+        overflow: visible;
     }
     .product-card-back {
         display: none;
@@ -2585,6 +2588,8 @@ main .container p {
         border-radius: 8px 8px 0 0;
         display: block;
         background-color: #fdfaf3;
+        max-width: 100%;
+        min-height: 120px;
     }
     .product-card h3 {
         margin: 12px 12px 8px 12px;
