@@ -224,29 +224,49 @@
     </main>
 
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h4 data-translate="followUs">Follow Us</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#"><i class="fa-brands fa-pinterest"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column newsletter">
-                    <h4 data-translate="newsletter">Sign up to our newsletter</h4>
-                    <form>
-                        <input type="email" placeholder="Enter your email">
-                        <button type="submit" data-translate="subscribe">Subscribe</button>
-                    </form>
+        <div class="container footer-container">
+            <div class="footer-column">
+                <h4>CUSTOMER CARE</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>BRAND</h4>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>ACCOUNT</h4>
+                <ul>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">Register</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>SOCIAL</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
-            <div class="container copyright">
-                <p data-translate="copyright">© 2024 Mama's Dumplings. All Rights Reserved.</p>
+            <div class="footer-column newsletter">
+                <h4>SIGN UP TO OUR NEWSLETTER</h4>
+                <form>
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">SUBSCRIBE</button>
+                </form>
             </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2024 Mama's Dumplings. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -267,11 +287,27 @@
 
     <!-- Search Modal -->
     <div id="search-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Search</h2>
-            <input type="text" id="search-input" data-translate-placeholder="searchPlaceholder" placeholder="Search dumplings...">
-            <div id="search-results"></div>
+        <div class="modal-content search-modal-content">
+            <span class="close-button" id="search-close">&times;</span>
+            <h2>Search Products</h2>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search for dumplings, wontons, desserts..." autocomplete="off">
+                <button id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+            <div id="search-results">
+                <!-- Search results will be displayed here -->
+            </div>
+            <div id="search-suggestions">
+                <h4>Popular Searches:</h4>
+                <div class="suggestion-tags">
+                    <span class="suggestion-tag">Pork</span>
+                    <span class="suggestion-tag">Chicken</span>
+                    <span class="suggestion-tag">Shrimp</span>
+                    <span class="suggestion-tag">Vegetable</span>
+                    <span class="suggestion-tag">Spicy</span>
+                    <span class="suggestion-tag">Dessert</span>
+                </div>
+            </div>
         </div>
     </div>
 
