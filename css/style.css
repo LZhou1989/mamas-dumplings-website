@@ -126,13 +126,17 @@ main .container {
 }
 
 .product-card {
-    background: transparent;
-    border: none;
-    text-align: center;
-    padding: 0;
-    perspective: 1000px;
-    display: flex;
-    flex-direction: column;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0e9d6;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .product-card-inner {
