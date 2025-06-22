@@ -6,8 +6,9 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-color: #fdfaf3;
-    color: #3d2c21;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
 }
 
 .container {
@@ -191,7 +192,6 @@ main .container {
     opacity: 1 !important;
     position: relative !important;
     z-index: 10 !important;
-    border: 3px solid red !important;
 }
 
 .product-card h3 {
