@@ -182,7 +182,7 @@ main .container {
 .product-card img {
     width: 100% !important;
     height: 150px !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
     border-radius: 8px 8px 0 0 !important;
     display: block !important;
     background-color: #fdfaf3 !important;
@@ -2582,7 +2582,7 @@ main .container p {
     .product-card img {
         width: 100% !important;
         height: 150px !important;
-        object-fit: cover !important;
+        object-fit: contain !important;
         border-radius: 8px 8px 0 0 !important;
         display: block !important;
         background-color: #fdfaf3 !important;
