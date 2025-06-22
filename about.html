@@ -25,7 +25,7 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="#">Search</a>
+                <a href="#" id="search-link">Search</a>
                 <a href="account.html">Account</a>
                 <a href="#" id="cart-link">Cart (0)</a>
             </div>
@@ -107,6 +107,32 @@
                     <span id="cart-subtotal">€0.00</span>
                 </div>
                 <button id="checkout-button">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div id="search-modal" class="modal">
+        <div class="modal-content search-modal-content">
+            <span class="close-button" id="search-close">&times;</span>
+            <h2>Search Products</h2>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search for dumplings, wontons, desserts..." autocomplete="off">
+                <button id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+            <div id="search-results">
+                <!-- Search results will be displayed here -->
+            </div>
+            <div id="search-suggestions">
+                <h4>Popular Searches:</h4>
+                <div class="suggestion-tags">
+                    <span class="suggestion-tag">Pork</span>
+                    <span class="suggestion-tag">Chicken</span>
+                    <span class="suggestion-tag">Shrimp</span>
+                    <span class="suggestion-tag">Vegetable</span>
+                    <span class="suggestion-tag">Spicy</span>
+                    <span class="suggestion-tag">Dessert</span>
+                </div>
             </div>
         </div>
     </div>

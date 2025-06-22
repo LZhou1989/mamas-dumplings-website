@@ -336,6 +336,7 @@ function setupSearchListeners() {
     const searchButton = document.getElementById('search-button');
     const searchModal = document.getElementById('search-modal');
     const searchCloseButton = document.querySelector('#search-modal .close-button');
+    const searchLink = document.getElementById('search-link');
 
     if (searchInput) {
         searchInput.addEventListener('keypress', (e) => {
@@ -351,6 +352,13 @@ function setupSearchListeners() {
 
     if (searchCloseButton) {
         searchCloseButton.addEventListener('click', closeSearchModal);
+    }
+
+    if (searchLink) {
+        searchLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            openSearchModal();
+        });
     }
 
     window.addEventListener('click', (e) => {
