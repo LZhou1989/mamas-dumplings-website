@@ -179,31 +179,67 @@ function getStaticProducts() {
 function renderProducts() {
     const productGrid = document.querySelector('.product-grid');
     if (!productGrid) return;
-    
-    // If no products are loaded, don't clear the existing HTML
     if (!products || products.length === 0) {
         console.log('No products loaded, preserving existing HTML');
         return;
     }
-    
     productGrid.innerHTML = '';
-    
     products.forEach(product => {
+        // Determine product type for filter
+        let filterType = '';
+        if (product.name.toLowerCase().includes('dumpling')) {
+            filterType = 'dumpling';
+        } else if (product.name.toLowerCase().includes('wonton')) {
+            filterType = 'wonton';
+        } else if (
+            product.name.toLowerCase().includes('ricecake') ||
+            product.name.toLowerCase().includes('tang yuan') ||
+            product.name.toLowerCase().includes('zhong zi')
+        ) {
+            filterType = 'dessert';
+        }
+        let filterValue = '';
+        if (filterType === 'dumpling') {
+            filterValue = `dumpling-${product.subcategory.toLowerCase()}`;
+        } else if (filterType === 'wonton') {
+            filterValue = `wonton-${product.subcategory.toLowerCase()}`;
+        } else if (filterType === 'dessert') {
+            if (product.name.toLowerCase().includes('ricecake')) {
+                filterValue = 'dessert-pumpkin-ricecake';
+            } else if (product.name.toLowerCase().includes('tang yuan')) {
+                filterValue = 'dessert-tang-yuan';
+            } else if (product.name.toLowerCase().includes('zhong zi')) {
+                filterValue = 'dessert-zhong-zi';
+            }
+        }
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
-        productCard.dataset.filter = `dumpling-${product.subcategory.toLowerCase()}`;
-        
+        productCard.dataset.filter = filterValue;
+        // Only show dumplings by default
+        let shouldShow = false;
+        if (filterType === 'dumpling') {
+            shouldShow = true;
+        } else {
+            // Check if its filter is selected
+            const allCheckboxes = document.querySelectorAll('.filters input[name="filter"]');
+            const selectedFilters = Array.from(allCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+            if (selectedFilters.includes(filterValue)) {
+                shouldShow = true;
+            }
+        }
+        productCard.style.display = shouldShow ? 'block' : 'none';
         productCard.innerHTML = `
             <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 150px; object-fit: contain; border-radius: 8px;">
             <h3>${product.name}</h3>
             <p>€${product.price.toFixed(2)}</p>
-            <button data-product-id="${product.id}" data-translate="addToCart">Add to Cart</button>
+            <div class="product-reviews">
+                <span class="stars">${'★'.repeat(Math.round(product.rating))}${'☆'.repeat(5 - Math.round(product.rating))}</span>
+                <span class="reviews" style="margin-left: 8px; color: #c34a36; text-decoration: underline; cursor: pointer;">${product.reviews} review${product.reviews === 1 ? '' : 's'}</span>
+            </div>
+            <button class="add-to-cart-btn" data-product-id="${product.id}" data-translate="addToCart">Add to Cart</button>
         `;
-        
         productGrid.appendChild(productCard);
     });
-    
-    // Re-attach event listeners for new buttons
     setupAddToCartListeners();
     setupReviewListeners();
 }
@@ -340,7 +376,7 @@ function setupCartModalListeners() {
     if (checkoutButton) {
         checkoutButton.addEventListener('click', () => {
             if (cart.length > 0) {
-                window.location.href = '/checkout';
+                window.location.href = 'checkout.html';
             }
         });
     }
@@ -521,14 +557,11 @@ async function performSearch() {
 function displaySearchResults(results) {
     const searchResultsContainer = document.getElementById('search-results');
     if (!searchResultsContainer) return;
-    
     searchResultsContainer.innerHTML = '';
-    
     if (results.length === 0) {
         searchResultsContainer.innerHTML = '<p>No products found.</p>';
         return;
     }
-    
     results.forEach(product => {
         const resultItem = document.createElement('div');
         resultItem.className = 'search-result-item';
@@ -544,8 +577,6 @@ function displaySearchResults(results) {
         `;
         searchResultsContainer.appendChild(resultItem);
     });
-    
-    // Re-attach event listeners for search result buttons
     document.querySelectorAll('#search-results .add-to-cart-btn').forEach(button => {
         button.addEventListener('click', addToCart);
     });
@@ -713,3 +744,26 @@ function setupMobileFilterDropdown() {
         });
     }
 }
+
+function toTranslationKey(name) {
+    return (
+        'product_' + name
+            .toLowerCase()
+            .replace(/&/g, 'and')
+            .replace(/[^a-z0-9]+/g, '_')
+            .replace(/^_|_$/g, '')
+    );
+}
+
+document.addEventListener('languageChanged', () => {
+    renderProducts();
+    // Optionally re-render search results if modal is open
+    const searchModal = document.getElementById('search-modal');
+    if (searchModal && searchModal.style.display === 'block') {
+        // Re-run the search to update translations
+        const searchInput = document.getElementById('search-input');
+        if (searchInput && searchInput.value.trim()) {
+            performSearch();
+        }
+    }
+});

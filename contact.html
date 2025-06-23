@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="js/languages.js"></script>
 </head>
 <body>
     <header>
@@ -34,35 +35,33 @@
     </header>
 
     <main>
-        <div class="container contact-container">
-            <h2>Contact Us</h2>
-            
-            <div class="contact-content">
-                <div class="contact-form-section">
-                    <h3>Get in Touch</h3>
+        <div class="container account-container">
+            <h2 data-translate="contactUs">Contact Us</h2>
+            <div class="account-layout">
+                <div class="login-section">
+                    <h3 data-translate="getInTouch">Get in Touch</h3>
                     <form id="contact-form">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Name" required>
+                            <input type="text" id="name" name="name" data-translate-placeholder="name" placeholder="Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Email" required>
+                            <input type="email" id="email" name="email" data-translate-placeholder="email" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                            <input type="text" id="subject" name="subject" data-translate-placeholder="subject" placeholder="Subject" required>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Message" required></textarea>
+                            <textarea id="message" name="message" data-translate-placeholder="message" placeholder="Message" required></textarea>
                         </div>
-                        <button type="submit">Send Message</button>
+                        <button type="submit" data-translate="sendMessage">Send Message</button>
                     </form>
                 </div>
-                
-                <div class="contact-info">
-                    <h3>Our Information</h3>
+                <div class="register-section">
+                    <h3 data-translate="ourInformation">Our Information</h3>
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <strong>Address:</strong><br>
+                            <strong data-translate="address">Address:</strong><br>
                             Herzogparkstrasse 1<br>
                             81679 Munich, Germany
                         </div>
@@ -70,14 +69,14 @@
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
                         <div>
-                            <strong>Email:</strong><br>
+                            <strong data-translate="email">Email:</strong><br>
                             contact@mamas-dumplings.com
                         </div>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
                         <div>
-                            <strong>Phone:</strong><br>
+                            <strong data-translate="phone">Phone:</strong><br>
                             +49 123 456 7890
                         </div>
                     </div>
@@ -89,23 +88,7 @@
     <footer>
         <div class="container footer-container">
             <div class="footer-column">
-                <h4>CUSTOMER CARE</h4>
-                <ul>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Shipping</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Returns</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>BRAND</h4>
-                <ul>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>SOCIAL</h4>
+                <h4 data-translate="social">SOCIAL</h4>
                 <div class="social-icons">
                     <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="#"><i class="fa-brands fa-pinterest"></i></a>
@@ -114,10 +97,10 @@
                 </div>
             </div>
             <div class="footer-column newsletter">
-                <h4>SIGN UP TO OUR NEWSLETTER</h4>
+                <h4 data-translate="sign_up_newsletter">SIGN UP TO OUR NEWSLETTER</h4>
                 <form>
                     <input type="email" placeholder="Enter your email">
-                    <button type="submit">SUBSCRIBE</button>
+                    <button type="submit" data-translate="subscribe">SUBSCRIBE</button>
                 </form>
             </div>
         </div>
